@@ -15,12 +15,15 @@ class HaskellStack < Formula
     sha256 "ecfa1ad7312544f079496d428fb7c3a16bed77206a218e98bce0ade2fe5ffa9e" => :yosemite
     sha256 "ef597e53f05f99f84309b300ccf573d339cf0809537bcd665c5e980c3ad2f88a" => :mavericks
   end
+  
+  def caveats; <<-EOS.undent
+    stack has been installed. You should add this directory
+    to your $PATH:
+      ~/.local/bin
 
-  depends_on "ghc" => :build
-  depends_on "cabal-install" => :build
-
-  def install
-    install_cabal_package
+    To get started, run:
+      stack setup
+    EOS
   end
 
   test do
